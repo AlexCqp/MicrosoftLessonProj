@@ -69,5 +69,4 @@ _[Ss]cripts
 *.nupkg
 *.ncrunchsolution
 *.dot[Cc]over
-Properties/launchSettings.json
 appsettings.*.json
