@@ -47,8 +47,10 @@ namespace ContosoPizza.Services
         /// </summary>
         public static void Delete(int Id){
             var pizza = Get(Id);
-            if(pizza is null)
+            if (pizza is null)
+            {
                 return;
+            }
             Pizzas.Remove(pizza);
         }
         
@@ -58,8 +60,10 @@ namespace ContosoPizza.Services
         /// <param name="pizza"></param>
         public static void Update(Pizza pizza){
             var index = Pizzas.FindIndex(p=>p.Id==pizza.Id);
-            if(index == -1)
+            if (index == -1)
+            {
                 return;
+            }
             Pizzas[index] = pizza;
 
         }

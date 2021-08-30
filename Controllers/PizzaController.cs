@@ -7,33 +7,35 @@ using ContosoPizza.Services;
 namespace ContosoPizza.Controllers
 {
     /// <summary>
-    /// Класс контроллера для обработки запросов
+    /// РљР»Р°СЃСЃ РєРѕРЅС‚СЂРѕР»Р»РµСЂР° РґР»СЏ РѕР±СЂР°Р±РѕС‚РєРё Р·Р°РїСЂРѕСЃРѕРІ
     /// </summary>
     [ApiController]
     [Route("[controller]")]
     public class PizzaController : ControllerBase 
     {
         /// <summary>
-        /// Возвращает все объекты класса Pizza
+        /// РџРѕР»СѓС‡РµРЅРёРµ РєРѕР»Р»РµРєС†РёРё РѕР±СЉРµС‚РѕРІ Pizza
         /// </summary>
        [HttpGet]
        public ActionResult<List<Pizza>> GetAll() => 
             PizzaService.GetAll();
         
         /// <summary>
-        /// Возвращает объект класса Pizza по id
+        /// РџРѕР»СѓС‡РµРЅРёРµ РѕР±СЉРµРєС‚Р° Pizza РїРѕ id
         /// </summary>
         [HttpGet("{id}")]
         public ActionResult<Pizza> Get(int id)
         {
             var pizza = PizzaService.Get(id);
-            if(pizza == null)
+            if (pizza == null)
+            {
                 return NotFound();
+            }
 
             return pizza;
         }
         /// <summary>
-        /// Создаёт новый объект класса Pizza
+        /// РЎРѕР·РґР°РЅРёРµ РѕР±СЉРµРєС‚Р° Pizza
         /// </summary>
         [HttpPost]
         public IActionResult Create(Pizza pizza)
@@ -42,24 +44,28 @@ namespace ContosoPizza.Controllers
             return CreatedAtAction(nameof(Create), new { id = pizza.Id }, pizza);
         }
         /// <summary>
-        /// Обновляет объект класса Pizza по id
+        /// РћР±РЅРѕРІР»РµРЅРёРµ РѕР±СЉРµРєС‚Р° Pizza РїРѕ id
         /// </summary>
         [HttpPut("{id}")]
         public IActionResult Update(int id, Pizza pizza)
         {
             if (id != pizza.Id)
+            {
                 return BadRequest();
+            }
 
             var existingPizza = PizzaService.Get(id);
-            if(existingPizza is null)
+            if (existingPizza is null)
+            {
                 return NotFound();
+            }
 
             PizzaService.Update(pizza);           
 
             return NoContent();
         }
         /// <summary>
-        /// Удаляет объект класса Pizza по id
+        /// РЈРґР°Р»РµРЅРёРµ РѕР±СЉРµРєС‚Р° Pizza РїРѕ id
         /// </summary>
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
@@ -67,7 +73,9 @@ namespace ContosoPizza.Controllers
             var pizza = PizzaService.Get(id);
 
             if (pizza is null)
+            {
                 return NotFound();
+            }
 
             PizzaService.Delete(id);
 
