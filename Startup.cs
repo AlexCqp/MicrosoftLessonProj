@@ -69,6 +69,12 @@ namespace ContosoPizza
             {
                 endpoints.MapControllers();
             });
+            app.Run(async (context) =>
+            {
+                await context.Response
+                .BodyWriter.WriteAsync(System.Text.Encoding.UTF8.GetBytes
+                (System.Diagnostics.Process.GetCurrentProcess().ProcessName));
+            });
         }
     }
 }
