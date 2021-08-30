@@ -13,16 +13,29 @@ using Microsoft.OpenApi.Models;
 
 namespace ContosoPizza
 {
+    /// <summary>
+    /// Класс конфигурации приложения
+    /// </summary>
     public class Startup
     {
+        /// <summary>
+        /// Инициализирует объект Sturtup
+        /// </summary>
+        /// <param name="configuration">Набор ключ-значение настроек приложения</param>
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
         }
-
+        /// <summary>
+        /// Набор настроек приложения
+        /// </summary>
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
+        /// <summary>
+        /// Регистрирует сервисы, которые используются приложением
+        /// </summary>
+        /// <param name="services">Коллекция сервисов приложения</param>
         public void ConfigureServices(IServiceCollection services)
         {
 
@@ -34,6 +47,11 @@ namespace ContosoPizza
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        /// <summary>
+        /// Конфигурация запросов
+        /// </summary>
+        /// <param name="app"></param>
+        /// <param name="env"></param>
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())

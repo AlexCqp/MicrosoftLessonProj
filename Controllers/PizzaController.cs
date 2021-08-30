@@ -6,15 +6,23 @@ using ContosoPizza.Services;
 
 namespace ContosoPizza.Controllers
 {
+    /// <summary>
+    /// Класс контроллера для обработки запросов
+    /// </summary>
     [ApiController]
     [Route("[controller]")]
-    public class PizzaController : ControllerBase
+    public class PizzaController : ControllerBase 
     {
+        /// <summary>
+        /// Возвращает все объекты класса Pizza
+        /// </summary>
        [HttpGet]
        public ActionResult<List<Pizza>> GetAll() => 
             PizzaService.GetAll();
         
-
+        /// <summary>
+        /// Возвращает объект класса Pizza по id
+        /// </summary>
         [HttpGet("{id}")]
         public ActionResult<Pizza> Get(int id)
         {
@@ -24,13 +32,18 @@ namespace ContosoPizza.Controllers
 
             return pizza;
         }
+        /// <summary>
+        /// Создаёт новый объект класса Pizza
+        /// </summary>
         [HttpPost]
         public IActionResult Create(Pizza pizza)
         {            
             PizzaService.Add(pizza);
             return CreatedAtAction(nameof(Create), new { id = pizza.Id }, pizza);
         }
-  
+        /// <summary>
+        /// Обновляет объект класса Pizza по id
+        /// </summary>
         [HttpPut("{id}")]
         public IActionResult Update(int id, Pizza pizza)
         {
@@ -45,7 +58,9 @@ namespace ContosoPizza.Controllers
 
             return NoContent();
         }
-
+        /// <summary>
+        /// Удаляет объект класса Pizza по id
+        /// </summary>
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {

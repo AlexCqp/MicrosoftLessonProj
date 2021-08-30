@@ -7,22 +7,35 @@ using Microsoft.Extensions.Logging;
 
 namespace ContosoPizza.Controllers
 {
+    /// <summary>
+    /// Класс контроллера для обработки запросов 
+    /// </summary>
     [ApiController]
     [Route("[controller]")]
     public class WeatherForecastController : ControllerBase
     {
+        /// <summary>
+        /// Коллекция обозначений температуры
+        /// </summary>
         private static readonly string[] Summaries = new[]
         {
             "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
         };
-
+        /// <summary>
+        /// Средство логирования 
+        /// </summary>
         private readonly ILogger<WeatherForecastController> _logger;
-
+        /// <summary>
+        /// Конструктор
+        /// </summary>
+        /// <param name="logger">Средство ведения журнала</param>
         public WeatherForecastController(ILogger<WeatherForecastController> logger)
         {
             _logger = logger;
         }
-
+        /// <summary>
+        /// Возвращает коллекцию объектов класса WeatherForecast
+        /// </summary>
         [HttpGet]
         public IEnumerable<WeatherForecast> Get()
         {
