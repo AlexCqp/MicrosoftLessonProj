@@ -70,4 +70,4 @@ _[Ss]cripts
 *.ncrunchsolution
 *.dot[Cc]over
 Properties/launchSettings.json
-application.*.json
+appsettings.*.json
