@@ -10,6 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using ContosoPizza.Services;
 
 namespace ContosoPizza
 {
@@ -38,12 +39,14 @@ namespace ContosoPizza
         /// <param name="services">Коллекция сервисов приложения</param>
         public void ConfigureServices(IServiceCollection services)
         {
-
+            services.AddSingleton<IPizzaSender, PizzaService>();
+            
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "ContosoPizza", Version = "v1" });
             });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -71,9 +74,10 @@ namespace ContosoPizza
             });
             app.Run(async (context) =>
             {
-                await context.Response
-                .BodyWriter.WriteAsync(System.Text.Encoding.UTF8.GetBytes
-                (System.Diagnostics.Process.GetCurrentProcess().ProcessName));
+                //await context.Response
+                //.BodyWriter.WriteAsync(System.Text.Encoding.UTF8.GetBytes
+                //(System.Diagnostics.Process.GetCurrentProcess().ProcessName));
+               // await context.Response.BodyWriter.WriteAsync(System.Text.Encoding.UTF8.GetBytes(pizzaSender.Get(1).Name));
             });
         }
     }

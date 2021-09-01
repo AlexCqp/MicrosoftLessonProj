@@ -14,11 +14,23 @@ namespace ContosoPizza.Controllers
     public class PizzaController : ControllerBase 
     {
         /// <summary>
+        /// Экземпляр класса службы данных
+        /// </summary>
+        private readonly IPizzaSender _pizzaSender;
+
+        /// <summary>
+        /// Конструктор
+        /// </summary>
+        public PizzaController(IPizzaSender pizzaSender)
+        {
+            _pizzaSender = pizzaSender;
+        }
+        /// <summary>
         /// Получение коллекции объетов Pizza
         /// </summary>
        [HttpGet]
        public ActionResult<List<Pizza>> GetAll() => 
-            PizzaService.GetAll();
+            _pizzaSender.GetAll();
         
         /// <summary>
         /// Получение объекта Pizza по id
@@ -26,7 +38,7 @@ namespace ContosoPizza.Controllers
         [HttpGet("{id}")]
         public ActionResult<Pizza> Get(int id)
         {
-            var pizza = PizzaService.Get(id);
+            var pizza = _pizzaSender.Get(id);
             if (pizza == null)
             {
                 return NotFound();
@@ -39,8 +51,8 @@ namespace ContosoPizza.Controllers
         /// </summary>
         [HttpPost]
         public IActionResult Create(Pizza pizza)
-        {            
-            PizzaService.Add(pizza);
+        {
+            _pizzaSender.Add(pizza);
             return CreatedAtAction(nameof(Create), new { id = pizza.Id }, pizza);
         }
         /// <summary>
@@ -54,13 +66,13 @@ namespace ContosoPizza.Controllers
                 return BadRequest();
             }
 
-            var existingPizza = PizzaService.Get(id);
+            var existingPizza = _pizzaSender.Get(id);
             if (existingPizza is null)
             {
                 return NotFound();
             }
 
-            PizzaService.Update(pizza);           
+            _pizzaSender.Update(pizza);           
 
             return NoContent();
         }
@@ -70,14 +82,14 @@ namespace ContosoPizza.Controllers
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            var pizza = PizzaService.Get(id);
+            var pizza = _pizzaSender.Get(id);
 
             if (pizza is null)
             {
                 return NotFound();
             }
 
-            PizzaService.Delete(id);
+            _pizzaSender.Delete(id);
 
             return NoContent();
         }
