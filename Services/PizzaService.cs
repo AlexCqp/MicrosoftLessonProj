@@ -7,7 +7,8 @@ namespace ContosoPizza.Services
     /// <summary>
     /// Класс службы данных для Pizza
     /// </summary>
-    public class PizzaService{
+    public class PizzaService : IPizzaSender
+    {
         /// <summary>
         /// Коллекция объектов Pizza
         /// </summary>
