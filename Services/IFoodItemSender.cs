@@ -9,27 +9,20 @@ namespace ContosoPizza.Services
     /// <summary>
     /// Интерфейс зависимости для PizzaService
     /// </summary>
-    public interface IPizzaSender
+    public interface IFoodItemSender<T> 
+        where T: class
     {
         /// <summary>
         /// Получение всех объектов
         /// </summary>
-        public List<Pizza> GetAll();
+        public List<T> GetAll();
         /// <summary>
         /// Получение Объекта по id
         /// </summary>
-        public Pizza Get(int id);
-        /// <summary>
-        /// Добавление объекта
-        /// </summary>
-        public void Add(Pizza pizza);
+        public T Get(int id);
         /// <summary>
         /// Удаление объекта по id
         /// </summary>
         public void Delete(int Id);
-        /// <summary>
-        /// Обновление объекта
-        /// </summary>
-        public void Update(Pizza pizza);
     }
 }

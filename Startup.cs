@@ -11,7 +11,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using ContosoPizza.Services;
-
+using ContosoPizza.Models;
 namespace ContosoPizza
 {
     /// <summary>
@@ -39,12 +39,15 @@ namespace ContosoPizza
         /// <param name="services">Коллекция сервисов приложения</param>
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddSingleton<IPizzaSender, PizzaService>();
+            services.AddSingleton<IFoodItemSender<Pizza>, PizzaService>();
+            services.AddSingleton<IFoodItemSender<Wok>, WokService>();
+            services.AddSingleton<IFoodItemSender<Pancake>, PancakeService>();
+            services.AddSingleton<IFoodItemSender<Food>>();
             
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "ContosoPizza", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Food", Version = "v1" });
             });
 
         }
@@ -61,7 +64,7 @@ namespace ContosoPizza
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "ContosoPizza v1"));
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Food v1"));
             }
 
             app.UseRouting();
