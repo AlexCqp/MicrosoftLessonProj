@@ -42,7 +42,6 @@ namespace ContosoPizza
             services.AddSingleton<IFoodItemSender<Pizza>, PizzaService>();
             services.AddSingleton<IFoodItemSender<Wok>, WokService>();
             services.AddSingleton<IFoodItemSender<Pancake>, PancakeService>();
-            services.AddSingleton<IFoodItemSender<Food>>();
             
             services.AddControllers();
             services.AddSwaggerGen(c =>

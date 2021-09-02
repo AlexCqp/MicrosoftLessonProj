@@ -19,7 +19,6 @@ namespace ContosoPizza.Controllers
         private readonly IFoodItemSender<Pizza> _pizzaSender;
         private readonly IFoodItemSender<Wok> _wokSender;
         private readonly IFoodItemSender<Pancake> _pancakeSender;
-        private readonly IFoodItemSender<Food> _foodItemSender;
         /// <summary>
         /// Конструктор
         /// </summary>
@@ -38,30 +37,30 @@ namespace ContosoPizza.Controllers
         [HttpGet("{source:int}")]
         public ActionResult<List<Food>> GetAll(FoodSource source)
         {
-            return _foodItemSender.GetAll();
-            //switch (source)
-            //{
-            //    case FoodSource.Pizza:
-            //        {
-            //            food = _pizzaSender.GetAll();
-            //            break;
-            //        }
-            //    case FoodSource.Wok:
-            //        {
-            //            food = _wokSender.GetAll();
-            //            break;
-            //        }
-            //    case FoodSource.Pancake:
-            //        {
-            //            food = _pancakeSender.GetAll();
-            //            break;
-            //        }
-            //    default:
-            //        {
-            //            return NotFound();
-            //        }
-            //}
-            //return food.ToList();
+            IEnumerable<Food> food = null;
+            switch (source)
+            {
+                case FoodSource.Pizza:
+                    {
+                        food = _pizzaSender.GetAll();
+                        break;
+                    }
+                case FoodSource.Wok:
+                    {
+                        food = _wokSender.GetAll();
+                        break;
+                    }
+                case FoodSource.Pancake:
+                    {
+                        food = _pancakeSender.GetAll();
+                        break;
+                    }
+                default:
+                    {
+                        return NotFound();
+                    }
+            }
+            return food.ToList();
         }
         
         /// <summary>
