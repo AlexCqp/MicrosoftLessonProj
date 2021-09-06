@@ -7,8 +7,9 @@ namespace ContosoPizza.Services
     /// <summary>
     /// Класс службы данных для Pizza
     /// </summary>
-    public class PizzaService : IFoodItemSender<Pizza>
+    public class PizzaService : FoodItemSender<Pizza>
     {
+        public string Type { get; } = "Pizza";
         /// <summary>
         /// Коллекция объектов Pizza
         /// </summary>
@@ -31,12 +32,12 @@ namespace ContosoPizza.Services
         /// Возвращает коллекцию объектов Pizza
         /// </summary>
         /// <returns></returns>
-        public List<Pizza> GetAll() => Pizzas;
+        public override List<Pizza> GetAll() => Pizzas;
 
         /// <summary>
         /// Возвращает объект класса Pizza по id
         /// </summary>
-        public Pizza Get(int id) => Pizzas.FirstOrDefault(p => p.Id == id);
+        public override Pizza Get(int id) => Pizzas.FirstOrDefault(p => p.Id == id);
 
         /// <summary>
         /// Удаляет объект класса Pizza по id

@@ -5,8 +5,9 @@ using System.Threading.Tasks;
 using ContosoPizza.Models;
 namespace ContosoPizza.Services
 {
-    public class WokService : IFoodItemSender<Wok>
+    public class WokService : FoodItemSender<Wok>
     {
+        public string Type { get; } = "Wok";
         /// <summary>
         /// Коллекция объектов Wok
         /// </summary>
@@ -22,10 +23,10 @@ namespace ContosoPizza.Services
             };
 
         }
-        public List<Wok> GetAll() => Woks;
+        public override List<Wok> GetAll() => Woks;
 
        
-        public Wok Get(int id) => Woks.FirstOrDefault(p => p.Id == id);
+        public override Wok Get(int id) => Woks.FirstOrDefault(p => p.Id == id);
 
         public void Delete(int Id) {
             var wok = Get(Id);

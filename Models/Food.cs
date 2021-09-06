@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace ContosoPizza.Models
 {
-    public abstract class Food
+    public interface Food
     {
 
         public int Id { get; set; }
