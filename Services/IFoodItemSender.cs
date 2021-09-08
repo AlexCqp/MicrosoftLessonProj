@@ -12,7 +12,6 @@ namespace ContosoPizza.Services
     public interface IFoodItemSender<out T> 
         where T: class
     {
-        public string Type { get; }
         /// <summary>
         /// Получение всех объектов
         /// </summary>
@@ -24,6 +23,5 @@ namespace ContosoPizza.Services
         /// <summary>
         /// Удаление объекта по id
         /// </summary>
-        public void Delete(int Id);
     }
 }

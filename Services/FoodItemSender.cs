@@ -5,20 +5,25 @@ using System.Threading.Tasks;
 using ContosoPizza.Models;
 namespace ContosoPizza.Services
 {
+    /// <summary>
+    /// Класс, реализующий интерфейс IFoodItemSender
+    /// </summary>
     public class FoodItemSender<T> : IFoodItemSender<T>
         where T : Food
     {
-        public string Type { get; }
-        IEnumerable<Food> foodCollection;
-        public void Delete(int Id)
-        {
-            
-        }
-
-        public virtual T Get(int id) => (T)foodCollection.FirstOrDefault(p => p.Id == id);
-
-
-        public virtual IEnumerable<T> GetAll() => (IEnumerable<T>)foodCollection;
+        /// <summary>
+        /// Коллекция объектов класса Food
+        /// </summary>
+        IEnumerable<T> foodCollection;
+        /// <summary>
+        /// Взятие объекта класса Food по id
+        /// </summary>
+        public virtual T Get(int id) => foodCollection.FirstOrDefault(p => p.Id == id);
+        /// <summary>
+        /// Возвращает всю коллекцию объектов класса Food
+        /// </summary>
+        /// <returns></returns>
+        public virtual IEnumerable<T> GetAll() => foodCollection;
 
     }
 }

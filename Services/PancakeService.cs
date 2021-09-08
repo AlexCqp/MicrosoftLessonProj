@@ -13,8 +13,6 @@ namespace ContosoPizza.Services
         /// </summary>
         public List<Pancake> Pancakes { get; }
 
-        public string Type { get; } = "Pancake";
-
         /// <summary>
         /// Конструктор. Инициализирует коллекцию объектов Pancake
         /// </summary>
@@ -27,19 +25,14 @@ namespace ContosoPizza.Services
             };
 
         }
+        /// <summary>
+        /// Возвращает все объекты класса Pancake
+        /// </summary>
         public override List<Pancake> GetAll() => Pancakes;
 
-
+        /// <summary>
+        /// Возвращает объект класса Pancake по id
+        /// </summary>
         public override Pancake Get(int id) => Pancakes.FirstOrDefault(p => p.Id == id);
-
-        public void Delete(int Id)
-        {
-            var Pancake = Get(Id);
-            if (Pancake is null)
-            {
-                return;
-            }
-            Pancakes.Remove(Pancake);
-        }
     }
 }

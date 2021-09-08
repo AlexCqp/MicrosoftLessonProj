@@ -17,27 +17,21 @@ namespace ContosoPizza.Controllers
         /// <summary>
         /// Экземпляр класса службы данных
         /// </summary>
-        private readonly IFoodItemSender<Pizza> _pizzaSender;
-        //private readonly IFoodItemSender<Wok> _wokSender;
-        //private readonly IFoodItemSender<Pancake> _pancakeSender;
+
         private IFoodItemSender<Food> _foodSender;
         /// <summary>
         /// Конструктор
         /// </summary>
         public FoodController(IFoodItemSender<Food> foodSender)
         {
-           // foodSender = new PizzaService();
             _foodSender = foodSender;
-
         }
         /// <summary>
         /// Получение коллекции объетов Pizza
         /// </summary>
         [HttpPost("{type}")]
-        public ActionResult<IEnumerable<Food>> GetAll([FromBody]IFoodItemSender<Food> type)
+        public ActionResult<IEnumerable<Food>> GetAll()
         {
-            //return BadRequest();
-            _foodSender = type;
             return _foodSender.GetAll().ToList();
         }
         
@@ -45,7 +39,7 @@ namespace ContosoPizza.Controllers
         /// Получение объекта Pizza по id
         /// </summary>
         [HttpGet("{id}")]
-        public ActionResult<Food> Get([FromBody] IFoodItemSender<Food> type,int id)
+        public ActionResult<Food> Get(int id)
         {
             Food food = _foodSender.Get(id);
             if(food is null)
@@ -53,54 +47,7 @@ namespace ContosoPizza.Controllers
                 return NoContent();
             }
             return food;
-            //switch (source)
-            //{
-            //    case FoodSource.Pizza:
-            //        {
-            //            food = _pizzaSender.Get(id);
-            //            break;
-            //        }
-            //    case FoodSource.Wok:
-            //        {
-            //            food = _wokSender.Get(id);
-            //            break;
-            //        }
-            //    case FoodSource.Pancake:
-            //        {
-            //            food = _pancakeSender.Get(id);
-            //            break;
-            //        }
-            //    default:
-            //        {
-            //            return NotFound();
-            //            break;
-            //        }
-            //}
-      
-            //if (food == null)
-            //{
-            //    return NotFound();
-            //}
-
-            //return food;
         }
         
-        /// <summary>
-        /// Удаление объекта Pizza по id
-        /// </summary>
-        //[HttpDelete("{id}")]
-        //public IActionResult Delete(int id)
-        //{
-        //    var pizza = _pizzaSender.Get(id);
-
-        //    if (pizza is null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    _pizzaSender.Delete(id);
-
-        //    return NoContent();
-        //}
     }
 }

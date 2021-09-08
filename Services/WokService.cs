@@ -7,7 +7,6 @@ namespace ContosoPizza.Services
 {
     public class WokService : FoodItemSender<Wok>
     {
-        public string Type { get; } = "Wok";
         /// <summary>
         /// Коллекция объектов Wok
         /// </summary>
@@ -23,20 +22,14 @@ namespace ContosoPizza.Services
             };
 
         }
+        /// <summary>
+        /// Возвращает коллекцию объектов класса Wok
+        /// </summary>
         public override List<Wok> GetAll() => Woks;
 
-       
-        public override Wok Get(int id) => Woks.FirstOrDefault(p => p.Id == id);
-
-        public void Delete(int Id) {
-            var wok = Get(Id);
-            if(wok is null)
-            {
-                return;
-            }
-            Woks.Remove(wok);
-        }
-
-       
+        /// <summary>
+        /// Возвращает объект класса Wok по id
+        /// </summary>
+        public override Wok Get(int id) => Woks.FirstOrDefault(p => p.Id == id);       
     }
 }
