@@ -8,7 +8,7 @@ namespace ContosoPizza.Models
     /// <summary>
     /// Класс модели для объектов Food
     /// </summary>
-    public abstract class Food
+    abstract class Food
     {
         /// <summary>
         /// Номер объекта

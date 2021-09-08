@@ -8,13 +8,13 @@ namespace ContosoPizza.Services
     /// <summary>
     /// Класс, реализующий интерфейс IFoodItemSender
     /// </summary>
-    public class FoodItemSender<T> : IFoodItemSender<T>
+    class FoodItemSender<T> : IFoodItemSender<T>
         where T : Food
     {
         /// <summary>
         /// Коллекция объектов класса Food
         /// </summary>
-        IEnumerable<T> foodCollection;
+        List<T> foodCollection;
         /// <summary>
         /// Взятие объекта класса Food по id
         /// </summary>

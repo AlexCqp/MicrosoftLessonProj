@@ -7,7 +7,7 @@ namespace ContosoPizza.Services
     /// <summary>
     /// Класс службы данных для Pizza
     /// </summary>
-    public class PizzaService : FoodItemSender<Pizza>
+    class PizzaService : FoodItemSender<Pizza>
     {
         /// <summary>
         /// Коллекция объектов Pizza

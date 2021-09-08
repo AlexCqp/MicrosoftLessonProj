@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using ContosoPizza.Models;
 namespace ContosoPizza.Services
 {
-    public class WokService : FoodItemSender<Wok>
+    class WokService : FoodItemSender<Wok>
     {
         /// <summary>
         /// Коллекция объектов Wok

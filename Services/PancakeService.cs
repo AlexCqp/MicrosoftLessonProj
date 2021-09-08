@@ -6,7 +6,7 @@ using ContosoPizza.Models;
 
 namespace ContosoPizza.Services
 {
-    public class PancakeService : FoodItemSender<Pancake>
+    class PancakeService : FoodItemSender<Pancake>
     {
         /// <summary>
         /// Коллекция объектов Pancake

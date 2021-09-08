@@ -22,7 +22,7 @@ namespace ContosoPizza.Controllers
         /// <summary>
         /// Конструктор
         /// </summary>
-        public FoodController(IFoodItemSender<Food> foodSender)
+        FoodController(IFoodItemSender<Food> foodSender)
         {
             _foodSender = foodSender;
         }
@@ -30,7 +30,7 @@ namespace ContosoPizza.Controllers
         /// Получение коллекции объетов Pizza
         /// </summary>
         [HttpPost]
-        public ActionResult<IEnumerable<Food>> GetAll()
+        ActionResult<IEnumerable<Food>> GetAll()
         {
             return _foodSender.GetAll().ToList();
         }
@@ -39,7 +39,7 @@ namespace ContosoPizza.Controllers
         /// Получение объекта Pizza по id
         /// </summary>
         [HttpGet("{id}")]
-        public ActionResult<Food> Get(int id)
+        ActionResult<Food> Get(int id)
         {
             Food food = _foodSender.Get(id);
             if(food is null)

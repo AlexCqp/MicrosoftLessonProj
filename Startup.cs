@@ -39,10 +39,7 @@ namespace ContosoPizza
         /// <param name="services">Коллекция сервисов приложения</param>
         public void ConfigureServices(IServiceCollection services)
         {
-            //services.AddSingleton<IFoodItemSender<Pizza>, PizzaService>();
-            //services.AddSingleton<IFoodItemSender<Wok>, WokService>();
-            //services.AddSingleton<IFoodItemSender<Pancake>, PancakeService>();
-            //services.AddSingleton<IFoodItemSender<Food>, Food>();
+           
             services.AddSingleton<IFoodItemSender<Food>, FoodItemSender<Food>>();
             services.AddControllers();
             services.AddSwaggerGen(c =>
@@ -75,13 +72,7 @@ namespace ContosoPizza
             {
                 endpoints.MapControllers();
             });
-            app.Run(async (context) =>
-            {
-                //await context.Response
-                //.BodyWriter.WriteAsync(System.Text.Encoding.UTF8.GetBytes
-                //(System.Diagnostics.Process.GetCurrentProcess().ProcessName));
-               // await context.Response.BodyWriter.WriteAsync(System.Text.Encoding.UTF8.GetBytes(pizzaSender.Get(1).Name));
-            });
+            
         }
     }
 }
