@@ -18,7 +18,7 @@ namespace ContosoPizza.Controllers
         /// Экземпляр класса службы данных
         /// </summary>
 
-        private IFoodItemSender<Food> _foodSender;
+        readonly private IFoodItemSender<Food> _foodSender;
         /// <summary>
         /// Конструктор
         /// </summary>
