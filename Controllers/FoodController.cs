@@ -29,7 +29,7 @@ namespace ContosoPizza.Controllers
         /// <summary>
         /// Получение коллекции объетов Pizza
         /// </summary>
-        [HttpPost("{type}")]
+        [HttpPost]
         public ActionResult<IEnumerable<Food>> GetAll()
         {
             return _foodSender.GetAll().ToList();
