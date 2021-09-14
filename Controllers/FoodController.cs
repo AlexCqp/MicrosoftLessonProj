@@ -18,7 +18,7 @@ namespace ContosoPizza.Controllers
         /// Экземпляр класса службы данных
         /// </summary>
 
-        private readonly IFoodItemSender<Food> _foodSender;
+        private IFoodItemSender<Food> _foodSender;
         /// <summary>
         /// Конструктор
         /// </summary>
@@ -32,6 +32,7 @@ namespace ContosoPizza.Controllers
         [HttpPost]
         ActionResult<IEnumerable<Food>> GetAll()
         {
+            
             return _foodSender.GetAll().ToList();
         }
         

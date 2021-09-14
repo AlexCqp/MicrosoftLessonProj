@@ -9,7 +9,7 @@ namespace ContosoPizza.Services
     /// <summary>
     /// Интерфейс зависимости для PizzaService
     /// </summary>
-    public interface IFoodItemSender<out T> 
+    public interface IFoodItemSender<T> 
         where T: class
     {
         /// <summary>
