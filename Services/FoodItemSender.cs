@@ -8,13 +8,13 @@ namespace ContosoPizza.Services
     /// <summary>
     /// Класс, реализующий интерфейс IFoodItemSender
     /// </summary>
-    class FoodItemSender<T> : IFoodItemSender<T>
+    public class FoodItemSender<T> : IFoodItemSender<T>
         where T : Food
     {
         /// <summary>
         /// Коллекция объектов класса Food
         /// </summary>
-        List<T> foodCollection;
+        public List<T> foodCollection;
         /// <summary>
         /// Взятие объекта класса Food по id
         /// </summary>
@@ -23,7 +23,7 @@ namespace ContosoPizza.Services
         /// Возвращает всю коллекцию объектов класса Food
         /// </summary>
         /// <returns></returns>
-        public virtual IEnumerable<T> GetAll() => foodCollection;
+        public virtual List<T> GetAll() => foodCollection;
 
     }
 }

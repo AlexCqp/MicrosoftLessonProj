@@ -15,7 +15,7 @@ namespace ContosoPizza.Services
         /// <summary>
         /// Получение всех объектов
         /// </summary>
-        public IEnumerable<T> GetAll();
+        public List<T> GetAll();
         /// <summary>
         /// Получение Объекта по id
         /// </summary>

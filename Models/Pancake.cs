@@ -8,7 +8,7 @@ namespace ContosoPizza.Models
     /// <summary>
     /// Класс модели для объектов Pancake
     /// </summary>
-    class Pancake : Food
+    public class Pancake : Food
     {
     }
 }

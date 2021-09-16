@@ -18,11 +18,11 @@ namespace ContosoPizza.Controllers
         /// Экземпляр класса службы данных
         /// </summary>
 
-        private IFoodItemSender<Food> _foodSender;
+        private readonly IFoodItemSender<Food> _foodSender;
         /// <summary>
         /// Конструктор
         /// </summary>
-        FoodController(IFoodItemSender<Food> foodSender)
+        public FoodController(IFoodItemSender<Food> foodSender)
         {
             _foodSender = foodSender;
         }
@@ -30,7 +30,7 @@ namespace ContosoPizza.Controllers
         /// Получение коллекции объетов Pizza
         /// </summary>
         [HttpPost]
-        ActionResult<IEnumerable<Food>> GetAll()
+        public ActionResult<List<Food>> GetAll()
         {
             
             return _foodSender.GetAll().ToList();
@@ -40,7 +40,7 @@ namespace ContosoPizza.Controllers
         /// Получение объекта Pizza по id
         /// </summary>
         [HttpGet("{id}")]
-        ActionResult<Food> Get(int id)
+        public ActionResult<Food> Get(int id)
         {
             Food food = _foodSender.Get(id);
             if(food is null)
