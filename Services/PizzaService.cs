@@ -7,16 +7,12 @@ namespace ContosoPizza.Services
     /// <summary>
     /// Класс службы данных для Pizza
     /// </summary>
-    public class PizzaService : IPizzaSender
+    public class PizzaService : FoodItemSender<Pizza>
     {
         /// <summary>
         /// Коллекция объектов Pizza
         /// </summary>
-        List<Pizza> Pizzas {get;}
-        /// <summary>
-        /// Начальный индекс для последующего добавления
-        /// </summary>
-        int nextId = 3;
+        List<Pizza> Pizzas { get; }
         /// <summary>
         /// Конструктор. Инициализирует коллекцию объектов Pizza
         /// </summary>
@@ -31,42 +27,12 @@ namespace ContosoPizza.Services
         /// Возвращает коллекцию объектов Pizza
         /// </summary>
         /// <returns></returns>
-        public List<Pizza> GetAll()=>Pizzas;
+        public override List<Pizza> GetAll() => Pizzas;
+
         /// <summary>
         /// Возвращает объект класса Pizza по id
         /// </summary>
-        public Pizza Get(int id) => Pizzas.FirstOrDefault(p => p.Id == id);
-        /// <summary>
-        /// Создаёт новый объект класса Pizza
-        /// </summary>
-        public void Add(Pizza pizza){
-            pizza.Id = nextId++;
-            Pizzas.Add(pizza);
-        }
-        /// <summary>
-        /// Удаляет объект класса Pizza по id
-        /// </summary>
-        public void Delete(int Id){
-            var pizza = Get(Id);
-            if (pizza is null)
-            {
-                return;
-            }
-            Pizzas.Remove(pizza);
-        }
-        
-        /// <summary>
-        /// Обновляет объект класса пицца
-        /// </summary>
-        /// <param name="pizza"></param>
-        public void Update(Pizza pizza){
-            var index = Pizzas.FindIndex(p=>p.Id==pizza.Id);
-            if (index == -1)
-            {
-                return;
-            }
-            Pizzas[index] = pizza;
+        public override Pizza Get(int id) => Pizzas.FirstOrDefault(p => p.Id == id);
 
-        }
     }
 }
